@@ -18,11 +18,9 @@ module.exports = class userController {
       return res.status(400).json({ error: "Email inválido. Deve conter @" });
     } // else if
     else {
-      // Cria e adiciona novo usuário
-
       // Construção da query INSERT
 
-      const query = `INSERT INTO usuario(cpf,password,email,name) VALUES(
+      const query = `INSERT INTO usuario (cpf,password,email,name) VALUES(
       '${cpf}',
       '${password}',
       '${email}',
@@ -60,34 +58,33 @@ module.exports = class userController {
   } // CreateUser
 
   static async getAllUsers(req, res) {
-    const query = "SELECT * FROM usuario";
+    const query = `SELECT * FROM usuario`;
 
     try {
       connect.query(query, function (err, results) {
         if (err) {
           console.error(err);
-          return res.status(500).json({ error: "Erro interno do servidor" });
+          return res.status(500).json({ error: "Erro Interno do Servidor" });
         }
-
         return res
           .status(200)
-          .json({ message: "Lista de usuários", users: results });
+          .json({ message: "Lista de Usuários", users: results });
       });
     } catch (error) {
       console.error("Erro ao executar consulta:", error);
-      return res.status(500).json({ error: "Erro interno do servidor" });
-    }
-  }
+      res.status(500).json({ error: "Erro Interno de Servidor" });
+    } // catch (error)
+  } //getAllUsers
 
   static async updateUser(req, res) {
-    const { id, name, email, password, cpf } = req.body;
+    const { id_usuario, name, email, password, cpf } = req.body;
     if (!name || !email || !password || !cpf) {
       return res
         .status(400)
         .json({ error: "Todos os campos devem ser preenchidos" });
     }
     const query = `UPDATE usuario SET name=?, email=?, password=?, cpf=? WHERE id_usuario=?`;
-    const values = [name, email, password, cpf, id];
+    const values = [name, email, password, cpf, id_usuario];
     try {
       connect.query(query, values, function (err, results) {
         if (err) {
