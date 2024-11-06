@@ -6,9 +6,9 @@ const cors = require('cors')
 const corsOptions = {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
+    credentials: true,  
     optionsSucessStatus: 204
 };
 
 app.use(cors(corsOptions));
-app.listen(3000);
+app.listen(5000);

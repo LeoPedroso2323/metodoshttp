@@ -133,7 +133,7 @@ module.exports = class orgController {
 
        if(results.affectedRows===0){
         return res.status(404).json({
-          eror:"Organizador não encontrado"
+          error:"Organizador não encontrado"
         })
        }
 
