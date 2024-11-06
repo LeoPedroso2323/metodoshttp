@@ -1,0 +1,41 @@
+POST:
+
+curl --location 'http://10.89.240.79:5000/api/v1/ing' \
+--header 'Content-Type: application/json' \
+--data '{
+    "preco": "10",
+    "tipo": "VIP",
+    "fk_id_evento": "12"
+}'
+
+----
+
+GET:
+
+curl --location 'http://10.89.240.79:5000/api/v1/ing' \
+--header 'Content-Type: application/json' \
+--data ''
+
+---
+
+PUT:
+
+curl --location --request PUT 'http://10.89.240.79:5000/api/v1/ing' \
+--header 'Content-Type: application/json' \
+--data '{
+    "preco": "99",
+    "tipo": "VIP",
+    "fk_id_evento": "12",
+    "id_ingresso": "19"
+}'
+
+---
+
+DELETE:
+
+curl --location --request DELETE 'http://10.89.240.194:5000/api/v1/ing/1' \
+--header 'Content-Type: application/json' \
+--data ''
+
+
+);
